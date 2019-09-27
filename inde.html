@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+        .card {
+            height: calc(100vh - 59px);
+            margin: 30px 0;
+        }
+        .card-body{
+            width: 80%;
+            margin: 0 auto;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #div1 .card-body{
+            background-image: url('img/div1.jpg');
+            background-color: antiquewhite;
+        }
+        #div2 .card-body{
+            background-image: url('img/div2.jpg');
+            background-color: aquamarine;
+        }
+        #div3 .card-body{
+            background-image: url('img/div3.jpg');
+            background-color: beige;
+        }
+        </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#div1">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#div2">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#div3">Pricing</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div id="div1" class="card">
+            <div class="card-body">
+            </div>
+        </div>
+        <div id="div2" class="card">
+            <div class="card-body">
+            </div>
+        </div>
+        <div id="div3" class="card">
+            <div class="card-body">
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        $(document).on("scroll", function(){
+            let div1 = $("#div1").offset().top;
+            let div2 = $("#div2").offset().top;
+            let div3 = $("#div3").offset().top;
+            let scrollPosition = $(window).scrollTop() + 59 // nav bar height
+            console.log(div1, div2, div3, scrollPosition);
+            if(div3 <= scrollPosition){
+                $(".active").removeClass("active")
+                $(".nav-item a[href='#div3']").addClass("active")
+            } else if (div2 <= scrollPosition) {
+                $(".active").removeClass("active")
+                $(".nav-item a[href='#div2']").addClass("active")
+            } else if (div1 <= scrollPosition) {
+                $(".active").removeClass("active")
+                $(".nav-item a[href='#div1']").addClass("active")
+            }
+        })
+    })
+    </script>
+    
+</body>
+
+</html>
